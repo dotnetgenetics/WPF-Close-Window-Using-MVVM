@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPFCloseWindowUsingMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCloseWindowUsingMVVM"
+        xmlns:localVM="clr-namespace:WPFCloseWindowUsingMVVM.ViewModels"
+        mc:Ignorable="d"
+        x:Name="MainProjectWindow"
+        WindowStartupLocation="CenterScreen"
+        Title="Close Window Using MVVM" Height="450" Width="800">
+    <Window.DataContext>
+        <localVM:MainWindowViewModel x:Name="vmLocalViewModel" />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File" HorizontalAlignment="Left">
+                <MenuItem Header="Exit" Command="{Binding ClosingWindowCommand}" CommandParameter="{Binding ElementName=MainProjectWindow}" HorizontalAlignment="Right"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
